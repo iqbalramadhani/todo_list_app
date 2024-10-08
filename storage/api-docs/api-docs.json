@@ -1,0 +1,1096 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Dokumentasi API Todo List",
+        "description": "Dokumentasi api yang tersedia",
+        "contact": {
+            "email": "iqbal.ramadhani@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Account Register",
+                "description": "Register in App",
+                "operationId": "d4576a0b2a26dd9236adf2282235bf01",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "username": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error Validate",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": {
+                                        "name": [
+                                            "string"
+                                        ],
+                                        "email": [
+                                            "string"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login Akun",
+                "description": "Login ke aplikasi",
+                "operationId": "d0ed6782bc0140015b3376b1cfbeb1fb",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "username": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true,
+                                    "user_data": {
+                                        "id": 3,
+                                        "name": "tes",
+                                        "email": "iqbal2@email.com",
+                                        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzEwODA1NTc4LCJleHAiOjE3MTA4MDkxNzgsIm5iZiI6MTcxMDgwNTU3OCwianRpIjoiUVRyVENYc0hLMU1DSFdlZSIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.TRR7zpFgY0xBNcWvCcw2JUJ1Zms6SbjnwsUqhAuxA2Q"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error validate data",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": {
+                                        "email": [
+                                            "The email field is required."
+                                        ],
+                                        "password": [
+                                            "The password field is required."
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout Akun",
+                "description": "Logout dari aplikasi",
+                "operationId": "e95cf528bb67fc0f040b55ef5a5aab8f",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/show-all-checklist": {
+            "get": {
+                "tags": [
+                    "Check List"
+                ],
+                "summary": "Show All Checklist",
+                "description": "Show All Checklist",
+                "operationId": "351bf36abfcb2a2c156a2ef0adb30ace",
+                "responses": {
+                    "401": {
+                        "description": "Error validate access token or form data",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/add-checklist": {
+            "post": {
+                "tags": [
+                    "Check List"
+                ],
+                "summary": "Add Checklist",
+                "description": "",
+                "operationId": "8ad05206c7bdac2238e3eddb41c382d6",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "description": "Judul",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error Data Validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error Auth Validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/remove-checklist": {
+            "delete": {
+                "tags": [
+                    "Check List"
+                ],
+                "summary": "Remove Checklist",
+                "description": "",
+                "operationId": "102e6ed052f4b8819305d11fd1d927de",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "ID Checklist",
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error Data Validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error Auth Validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/show-detail-checklist-item": {
+            "get": {
+                "tags": [
+                    "Check List Item"
+                ],
+                "summary": "Show All Checklist Item",
+                "description": "Show All Checklist Item",
+                "operationId": "30c5aaa14b4232cd8755bac4a69a7a38",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "ID checklist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Error validate access token or form data",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/add-checklist-item": {
+            "post": {
+                "tags": [
+                    "Check List Item"
+                ],
+                "summary": "Add Checklist Item",
+                "description": "",
+                "operationId": "13ab71a8143ae737c3301b7b31f86bf3",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "ID Check List",
+                                        "type": "number"
+                                    },
+                                    "item": {
+                                        "description": "Nama Item",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error Data Validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error Auth Validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/remove-checklist-item": {
+            "delete": {
+                "tags": [
+                    "Check List Item"
+                ],
+                "summary": "Remove Checklist",
+                "description": "",
+                "operationId": "12779e7e0709980149928cbea893c55d",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "ID Checklist Item",
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error Data Validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error Auth Validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/update-checklist-item": {
+            "put": {
+                "tags": [
+                    "Check List Item"
+                ],
+                "summary": "Upde Status Checklist Item",
+                "description": "",
+                "operationId": "034f142170056a1bb94a22cfc2aa4b62",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "ID checklist item",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error Data Validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error Auth Validation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User Profile",
+                "description": "Show detail user account",
+                "operationId": "dd48b9887ac0e98fac70ebd3da3eb645",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true,
+                                    "user_profile": {
+                                        "id": 123,
+                                        "name": "tes",
+                                        "email": "iqbal2@email.com",
+                                        "created_at": "15-03-2024 06:06:30",
+                                        "updated_at": "15-03-2024 06:06:30",
+                                        "type": "organisasi",
+                                        "no_handphone": null,
+                                        "kode_refferal": null,
+                                        "no_rekening": null,
+                                        "bank": null,
+                                        "atas_nama_bank": null,
+                                        "url_photo": null,
+                                        "wakaf_maksimal": 0,
+                                        "bulan_maksimal_pembayaran": 0
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error Access Token",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/user/update-profile": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update Profile",
+                "description": "Update user profile data",
+                "operationId": "1caf4d5e3c235a7e4632213c819dbbec",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "no_handphone": {
+                                        "description": "No Handphone",
+                                        "type": "string"
+                                    },
+                                    "no_rekening": {
+                                        "description": "No Rekening",
+                                        "type": "string"
+                                    },
+                                    "nama_bank": {
+                                        "description": "Nama Bank",
+                                        "type": "string"
+                                    },
+                                    "pemilik_rekening": {
+                                        "description": "Pemilik Rekening",
+                                        "type": "string"
+                                    },
+                                    "wakaf_maksimal": {
+                                        "description": "Wakaf maksimal",
+                                        "type": "number"
+                                    },
+                                    "bulan_maksimal_pembayaran": {
+                                        "description": "Perbulan maksimal pembayaran",
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true,
+                                    "user_data": {
+                                        "id": "integer",
+                                        "name": "string",
+                                        "email": "string",
+                                        "role": "string",
+                                        "no_handphone": "string",
+                                        "kode_refferal": "string",
+                                        "no_rekening": "string",
+                                        "bank": "string",
+                                        "atas_nama_bank": "string",
+                                        "url_photo": "string",
+                                        "wakaf_maksimal": "integer",
+                                        "bulan_maksimal_pembayaran": "integer",
+                                        "organisasi": "string",
+                                        "profile_lengkap": "boolean"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation if photo profile still empty after update data",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true,
+                                    "user_data": {
+                                        "id": "integer",
+                                        "name": "string",
+                                        "email": "string",
+                                        "role": "string",
+                                        "no_handphone": "string",
+                                        "kode_refferal": "string",
+                                        "no_rekening": "string",
+                                        "bank": "string",
+                                        "atas_nama_bank": "string",
+                                        "url_photo": "string",
+                                        "wakaf_maksimal": "integer",
+                                        "bulan_maksimal_pembayaran": "integer",
+                                        "organisasi": "string",
+                                        "profile_lengkap": "boolean"
+                                    },
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/user/upload-photo-profile": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update Profile",
+                "description": "Update user photo profile data",
+                "operationId": "65cfe42e8484a5f96811d02676feee31",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "photo_profile": {
+                                        "description": "Upload photo profile",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true,
+                                    "user_data": {
+                                        "id": "integer",
+                                        "name": "string",
+                                        "email": "string",
+                                        "role": "string",
+                                        "no_handphone": "string",
+                                        "kode_refferal": "string",
+                                        "no_rekening": "string",
+                                        "bank": "string",
+                                        "atas_nama_bank": "string",
+                                        "url_photo": "string",
+                                        "wakaf_maksimal": "integer",
+                                        "bulan_maksimal_pembayaran": "integer",
+                                        "organisasi": "string",
+                                        "profile_lengkap": "boolean"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/show-member-user-list": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Show member user list",
+                "description": "Show member user list",
+                "operationId": "31f2ba177540f179f7db0c6cab5410b2",
+                "parameters": [
+                    {
+                        "name": "search_name",
+                        "in": "query",
+                        "description": "Seach member by name based on organization",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pengguna_dana_wakaf",
+                        "in": "query",
+                        "description": "Filter limit by member use wakaf donation",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                0,
+                                1,
+                                2
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Error validate access token or form data",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "message": "string"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true,
+                                    "data": [
+                                        {
+                                            "id": 34,
+                                            "name": "Tes Member",
+                                            "email": "iqbal9@email.com",
+                                            "no_handphone": null,
+                                            "photo_url": "uploads/img/ihKytu30032024074639.png",
+                                            "created_at": "29-03-2024 03:25:39"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error Internal Server",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": false,
+                                    "error": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
